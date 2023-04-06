@@ -4,12 +4,14 @@ import time
 driver = webdriver.Chrome(executable_path="chromedriver")
 driver.get("https://www.youtube.com/@zusmani78/videos")
 
-scroll_distance = 2000
-i = 0
+last_scroll_height = driver.execute_script("return document.documentElement.scrollHeight")
 
 while True:
-    driver.execute_script("window.scrollBy(0, 2000);")
+    driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
     time.sleep(0.5)
-    i += 1
+    new_scroll_height = driver.execute_script("return document.documentElement.scrollHeight")
+    if new_scroll_height == last_scroll_height:
+        break
+    last_scroll_height = new_scroll_height
 
 driver.quit()
