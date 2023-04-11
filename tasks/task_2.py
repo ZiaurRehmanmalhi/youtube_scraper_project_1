@@ -29,7 +29,7 @@ for videos in all_content:
     video_duration = videos.find(
         'span', {"class": "style-scope ytd-thumbnail-overlay-time-status-renderer"}
     ).text.strip()
-
+ 
     all_data = {
         "Title": title,
         "Views": views,
