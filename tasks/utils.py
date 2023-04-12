@@ -20,8 +20,9 @@ def extract_videos_data(soup):
         title = videos.find('yt-formatted-string', {"id": "video-title"}).text
         views = videos.find('span', {"class": "inline-metadata-item style-scope ytd-video-meta-block"}).text
         uploaded_at = videos.find(
-            'span', {"class": "inline-metadata-item style-scope ytd-video-meta-block"}
-        ).get('before')
+            'div', {"class": "style-scope ytd-video-meta-block"}
+        ).text.strip().split('\n')[-1::-3][0]
+
         video_duration = videos.find(
             'span', {"class": "style-scope ytd-thumbnail-overlay-time-status-renderer"}
         ).text.strip()
@@ -29,6 +30,7 @@ def extract_videos_data(soup):
         all_video_data = {
             "Title": title,
             "Views": views,
+            "Uploaded_at": uploaded_at,
             "Video Duration": video_duration,
             "Thumbnail Link": thumbnail
         }
