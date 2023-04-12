@@ -22,7 +22,6 @@ def extract_videos_data(soup):
         uploaded_at = videos.find(
             'div', {"class": "style-scope ytd-video-meta-block"}
         ).text.strip().split('\n')[-1::-3][0]
-
         video_duration = videos.find(
             'span', {"class": "style-scope ytd-thumbnail-overlay-time-status-renderer"}
         ).text.strip()
