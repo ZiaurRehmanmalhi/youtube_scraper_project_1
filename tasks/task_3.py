@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from utils import scroll_to_page_end, extract_videos_data
 
+
 url = input("Enter Any Youtube Chanel URL: ")
 url += "/videos"
 driver = webdriver.Chrome(executable_path="chromedriver")
